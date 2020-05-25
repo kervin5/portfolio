@@ -1,0 +1,33 @@
+//Functins and mixins
+@mixin image-bg($bg-position, $bg-image) {
+  background-image: url($bg-image);
+  background-repeat: no-repeat;
+  background-position: $bg-position;
+  width: 100%;
+}
+
+//Styles
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  padding: 0;
+  margin: 0;
+}
+
+.slider {
+  @include image-bg(bottom left, "images/pattern-curve.svg");
+
+  //Modifiers
+  &.full-height {
+    height: 100vh;
+  }
+
+  //Children
+  .slide {
+    @include image-bg(right, "images/pattern-bg.svg");
+    height: 100%;
+  }
+}
