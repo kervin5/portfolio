@@ -4,6 +4,7 @@ $muted-color: hsl(240, 18%, 77%);
 $light-color: white;
 $button-radius: 30px;
 $shadow: 0px 27px 42px -27px $dark-color;
+$mobile-view: 700px;
 
 //Functins and mixins
 @mixin image-bg($bg-position, $bg-image) {
@@ -16,6 +17,7 @@ $shadow: 0px 27px 42px -27px $dark-color;
 * {
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
+  transition: 200ms;
 }
 
 body,
@@ -28,10 +30,11 @@ html {
   @include image-bg(bottom left, "images/pattern-curve.svg");
   padding: 70px;
   width: 100%;
+  overflow: hidden;
 
   //Modifiers
   &.full-height {
-    height: 100vh;
+    min-height: 100vh;
   }
 
   //Children
@@ -49,6 +52,7 @@ html {
       flex-direction: column;
       justify-content: center;
       position: relative;
+      z-index: 2;
       left: 120px;
       @include image-bg(80px 120px, "images/pattern-quotes.svg");
 
@@ -64,6 +68,21 @@ html {
         .muted-text {
           color: $muted-color;
         }
+
+        @media (max-width: $mobile-view) {
+          font-size: 1.1rem;
+          .muted-text {
+            display: block;
+          }
+        }
+      }
+      @media (max-width: $mobile-view) {
+        font-size: 1.1rem;
+        position: static;
+        padding: 30px;
+        text-align: center;
+        background-position: 50% 20px;
+        background-size: 15%;
       }
     }
 
@@ -72,13 +91,30 @@ html {
       display: flex;
       background-size: contain;
       position: relative;
+      z-index: 1;
       justify-content: center;
       align-items: center;
+      padding: 50px;
       img {
         max-width: 500px;
         width: 100%;
         border-radius: 5px;
         box-shadow: $shadow;
+      }
+
+      @media (max-width: $mobile-view) {
+        padding: 40px;
+      }
+
+      .slide-active {
+        display: none;
+      }
+    }
+
+    @media (max-width: $mobile-view) {
+      flex-direction: column-reverse;
+      & > * {
+        width: 100%;
       }
     }
   }
@@ -94,13 +130,16 @@ html {
     overflow: hidden;
     box-shadow: $shadow;
     position: absolute;
-    bottom: 40px;
-    left: 100px;
+    bottom: 20px;
+    left: 30%;
 
     .slider-control {
       width: 20px;
-      height: 20px;
       padding: 20px 30px;
+      height: 100%;
+      &:hover {
+        background-color: $muted-color;
+      }
     }
 
     .prev-button {
@@ -110,5 +149,16 @@ html {
     .next-button {
       @include image-bg(center, "images/icon-next.svg");
     }
+
+    @media (max-width: $mobile-view) {
+      left: auto;
+      bottom: 10px;
+      transform: scale(0.7);
+    }
+  }
+
+  @media (max-width: $mobile-view) {
+    padding: 0px;
+    background-size: contain;
   }
 }
