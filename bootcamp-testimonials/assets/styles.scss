@@ -17,7 +17,7 @@ $mobile-view: 700px;
 * {
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
-  transition: 200ms;
+  transition: 300ms;
 }
 
 body,
@@ -39,8 +39,9 @@ html {
 
   //Children
   .slide {
-    height: 100%;
+    position: absolute;
     display: flex;
+    opacity: 0;
 
     & > * {
       width: 50%;
@@ -105,10 +106,6 @@ html {
       @media (max-width: $mobile-view) {
         padding: 40px;
       }
-
-      .slide-active {
-        display: none;
-      }
     }
 
     @media (max-width: $mobile-view) {
@@ -116,6 +113,10 @@ html {
       & > * {
         width: 100%;
       }
+    }
+
+    &.slide-active {
+      opacity: 1;
     }
   }
 
@@ -160,5 +161,34 @@ html {
   @media (max-width: $mobile-view) {
     padding: 0px;
     background-size: contain;
+  }
+}
+
+.slide-in {
+  animation: slideInAnimation 300ms linear;
+}
+
+.slide-out {
+  animation: slideOutAnimation 300ms linear;
+  pointer-events: none;
+}
+
+@keyframes slideInAnimation {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutAnimation {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
   }
 }
