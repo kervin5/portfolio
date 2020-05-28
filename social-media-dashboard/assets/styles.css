@@ -46,7 +46,7 @@
     .dashboard .toggle__button {
       display: inline-block;
       width: 60px;
-      height: 30px;
+      height: 35px;
       background: linear-gradient(90deg, #378fe6 0%, #3eda82 100%);
       border-radius: 30px;
       position: relative; }
@@ -61,7 +61,17 @@
         right: 5px;
         top: 50%;
         bottom: 50%;
-        transform: translateY(-50%); }
+        transform: translateY(-50%) translateX(0);
+        transition: 300ms; }
+  .dashboard.dashboard--light {
+    background-color: white; }
+    .dashboard.dashboard--light::before {
+      background-color: #f5f7ff; }
+    .dashboard.dashboard--light .toggle__text {
+      color: #63687e; }
+    .dashboard.dashboard--light .toggle__button::after {
+      background-color: #f5f7ff;
+      transform: translateY(-50%) translateX(-25px); }
 
 .container {
   width: 100%;

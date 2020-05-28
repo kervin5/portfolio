@@ -15,6 +15,7 @@ $lt-very-pale-blue: hsl(225, 100%, 98%);
 $lt-light-grayish-blue: hsl(227, 47%, 96%);
 $lt-dark-grayish-blue: hsl(228, 12%, 44%);
 $lt-very-dark-blue: hsl(230, 17%, 14%);
+$lt-toggle-bg: hsl(230, 22%, 74%);
 
 //Global
 $toggle-gradient: linear-gradient(
@@ -99,7 +100,7 @@ $youtube: hsl(348, 97%, 39%);
     &__button {
       display: inline-block;
       width: 60px;
-      height: 30px;
+      height: 35px;
       background: $toggle-gradient;
       border-radius: 30px;
       position: relative;
@@ -115,7 +116,27 @@ $youtube: hsl(348, 97%, 39%);
         right: 5px;
         top: 50%;
         bottom: 50%;
-        transform: translateY(-50%);
+        transform: translateY(-50%) translateX(0);
+        transition: 300ms;
+      }
+    }
+  }
+
+  &.dashboard--light {
+    background-color: $lt-white;
+    &::before {
+      background-color: $lt-very-pale-blue;
+    }
+
+    .toggle {
+      &__text {
+        color: $lt-dark-grayish-blue;
+      }
+      &__button {
+        &::after {
+          background-color: $lt-very-pale-blue;
+          transform: translateY(-50%) translateX(-25px);
+        }
       }
     }
   }
