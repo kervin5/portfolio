@@ -37,6 +37,8 @@
     position: relative; }
   .dashboard .title__content {
     color: white; }
+    .dashboard .title__content--level2 {
+      font-size: 1.7rem; }
   .dashboard .title__summary {
     color: #8b97c6; }
   .dashboard .toggle {
@@ -92,7 +94,9 @@
         -ms-flex-align: center;
             align-items: center;
     padding: 40px 20px;
-    border-radius: 5px; }
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden; }
     .dashboard .card--facebook {
       border-top: 3px solid #198ff5; }
       .dashboard .card--facebook .card__username {
@@ -101,10 +105,17 @@
       border-top: 3px solid #1ca0f2; }
       .dashboard .card--twitter .card__username {
         background-image: url(images/icon-twitter.svg); }
-    .dashboard .card--instagram {
-      border-top: 3px solid linear-gradient(90deg, #fdc468 0%, #df4996 100%); }
-      .dashboard .card--instagram .card__username {
-        background-image: url(images/icon-instagram.svg); }
+    .dashboard .card--instagram::before {
+      background: -webkit-gradient(linear, left top, right top, from(#fdc468), to(#df4996));
+      background: linear-gradient(90deg, #fdc468 0%, #df4996 100%);
+      content: "";
+      width: 100%;
+      height: 3px;
+      display: inline-block;
+      position: absolute;
+      top: 0; }
+    .dashboard .card--instagram .card__username {
+      background-image: url(images/icon-instagram.svg); }
     .dashboard .card--youtube {
       border-top: 3px solid #c4032a; }
       .dashboard .card--youtube .card__username {
@@ -112,16 +123,34 @@
     .dashboard .card__username {
       background-repeat: no-repeat;
       padding-left: 30px;
-      font-size: 0.9rem;
-      margin-bottom: 10px; }
+      font-size: 0.9rem; }
+      .dashboard .card__username > * {
+        margin-bottom: 10px; }
     .dashboard .card__stats {
-      text-align: center; }
+      text-align: center;
+      margin-bottom: 20px; }
       .dashboard .card__stats > *:first-child {
         font-size: 4rem; }
       .dashboard .card__stats > *:last-child {
         text-transform: uppercase;
         letter-spacing: 0.5rem;
         font-size: 0.7rem; }
+    .dashboard .card__today {
+      background-repeat: no-repeat;
+      padding-left: 15px;
+      font-size: 0.9rem;
+      text-align: center;
+      background-position: left center; }
+      .dashboard .card__today * {
+        font-weight: bold; }
+      .dashboard .card__today--up {
+        background-image: url(images/icon-up.svg); }
+        .dashboard .card__today--up * {
+          color: #1db489; }
+      .dashboard .card__today--down {
+        background-image: url(images/icon-down.svg); }
+        .dashboard .card__today--down * {
+          color: #dc414c; }
   .dashboard.dashboard--light {
     background-color: white; }
     .dashboard.dashboard--light::before {
