@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+  transition: 300ms;
+  font-family: "Inter", sans-serif; }
+
+body,
+html {
+  padding: 0;
+  margin: 0; }
+
+.dashboard {
+  width: 100%;
+  min-height: 100vh; }
+
+/*# sourceMappingURL=styles.css.map */
